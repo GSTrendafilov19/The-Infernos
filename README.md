@@ -1,6 +1,6 @@
-<p align = "center">
-  <h1> The Infernos </h1>
-  <img src = "https://imgur.com/eMr5dyd.jpeg"  alt = "logo" width = "300px" height = "300px">
+<h1 align = "center"> The Infernos </h1>
+  <p align = "center">
+  <img src = "https://imgur.com/eMr5dyd.jpeg"  alt = "logo" width = "400px" height = "400px">
   </p>
   
   
