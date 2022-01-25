@@ -1,5 +1,5 @@
 <p align = "center">
-  <img src = "https://imgur.com/eMr5dyd.jpeg"  alt = "logo">
+  <img src = "https://imgur.com/eMr5dyd.jpeg"  alt = "logo" width = "500px" height = "500px">
   </p>
   
   <h1 align = "center"> The Infernos </h1>
