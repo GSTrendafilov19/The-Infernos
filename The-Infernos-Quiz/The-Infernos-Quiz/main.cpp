@@ -1,57 +1,62 @@
-#include <SFML/Graphics.hpp>
+#include "SFML/Graphics.hpp"
+#include <iostream>
+#include "Menu.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "This is the title");
-    window.setFramerateLimit(60);
+	sf::RenderWindow window(sf::VideoMode(600, 600), "SFML WORK!");
 
-    sf::RectangleShape rect(sf::Vector2f(20, 20));
-    rect.setFillColor(sf::Color::Green);
-    rect.setPosition(sf::Vector2f(50, 50));
+	Menu menu(window.getSize().x, window.getSize().y);
 
-    while (window.isOpen())
-    {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        {
-            rect.move(0, -5);
-        }
+	while (window.isOpen())
+	{
+		sf::Event event;
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        {
-            rect.move(0, 5);
-        }
+		while (window.pollEvent(event))
+		{
+			switch (event.type)
+			{
+			case sf::Event::KeyReleased:
+				switch (event.key.code)
+				{
+				case sf::Keyboard::Up:
+					menu.MoveUp();
+					break;
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            rect.move(-5, 0);
-        }
+				case sf::Keyboard::Down:
+					menu.MoveDown();
+					break;
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-            rect.move(5, 0);
-        }
+				case sf::Keyboard::Return:
+					switch (menu.GetPressedItem())
+					{
+					case 0:
+						std::cout << "Play button has been pressed" << std::endl;
+						break;
+					case 1:
+						std::cout << "Option button has been pressed" << std::endl;
+						break;
+					case 2:
+						window.close();
+						break;
+					}
 
+					break;
+				}
 
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
+				break;
+			case sf::Event::Closed:
+				window.close();
 
-            if (event.type == sf::Event::Closed)
-            {
+				break;
 
+			}
+		}
 
-                window.close();
+		window.clear();
 
+		menu.draw(window);
 
-            }
-        }
-
-        window.clear();
-
-        window.draw(rect);
-
-        window.display();
-    }
-
-    return 0;
+		window.display();
+	}
 }
