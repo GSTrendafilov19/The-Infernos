@@ -3,11 +3,11 @@
 #include "Menu.h"
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(600, 600), "HISTORY QUIZ");
+	sf::RenderWindow window(sf::VideoMode(1180, 820), "HISTORY QUIZ");
 	Menu menu(window.getSize().x, window.getSize().y);
 	sf::Texture texture;
 
-	if (!texture.loadFromFile("textures/background.jpeg"))
+	if (!texture.loadFromFile("textures/background-main.jpg"))
 	{
 		std::cout << "Could not load texture";
 	}
