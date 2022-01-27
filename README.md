@@ -30,7 +30,7 @@
 
   <p>
     <h1> 👨‍💻 Our Team</h1>
-    <p> • <a href = "https://github.com/GSTrendafilov"> GSTrendafilov</a> - Scrum Trainer </p>
+    <p> • <a href = "https://github.com/GSTrendafilov19"> GSTrendafilov19</a> - Scrum Trainer </p>
 	<p> • <a href = "https://github.com/BDSimeonov19"> BDSimeonov19</a> - Front-end Developer </p>
 	<p> • <a href = "https://github.com/SMDimitrov19"> SMDimitrov19</a> - Back-end Developer </p>
 	<p> • <a href = "https://github.com/GAVasilev19"> GAVasilev19</a> - QA Engineer </p>
