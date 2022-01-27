@@ -1,12 +1,20 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include "Menu.h"
-
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(600, 600), "SFML WORK!");
-
+	sf::RenderWindow window(sf::VideoMode(600, 600), "HISTORY QUIZ");
 	Menu menu(window.getSize().x, window.getSize().y);
+	sf::Texture texture;
+
+	if (!texture.loadFromFile("textures/background.jpeg"))
+	{
+		std::cout << "Could not load texture";
+	}
+
+	sf::Sprite sprite;
+
+	sprite.setTexture(texture);
 
 	while (window.isOpen())
 	{
@@ -54,6 +62,8 @@ int main()
 		}
 
 		window.clear();
+
+		window.draw(sprite);
 
 		menu.draw(window);
 
