@@ -3,7 +3,7 @@
 #include "Menu.h"
 #include "Button.h"
 
-void onPlayClick(sf::RenderWindow& window)
+void onPlayClick(sf::RenderWindow& window1)
 {
 	sf::Texture texture;
 	if (!texture.loadFromFile("textures/history.jpg"))
@@ -12,7 +12,20 @@ void onPlayClick(sf::RenderWindow& window)
 	}
 	sf::Sprite background(texture);
 
-	window.draw(background);
+	window1.draw(background);
+}
+
+void onPlayDisplay()
+{
+	sf::Font font;
+	if (!font.loadFromFile("font/arial.ttf"))
+	{
+		std::cout << "Coudldn't load the file";
+	}
+	sf::Text text;
+	text.setFont(font);
+	text.setString("Which event in the bulgarian history has happend the following year? ");
+	text.setFillColor(sf::Color::Red);
 }
 
 int main()
@@ -29,7 +42,8 @@ int main()
 	sf::Sprite sprite;
 	sprite.setTexture(background);
 
-	bool checked = false;
+	bool checkPlay = false;
+	bool checkOptions = false;
 
 	while (window.isOpen())
 	{
@@ -54,10 +68,11 @@ int main()
 					{
 					case 0: // play button
 						std::cout << "Play button has been pressed" << std::endl;
-						checked = true;
+						checkPlay = true;
 						break;
 					case 1: // option button
 						std::cout << "Option button has been pressed" << std::endl;
+						checkOptions = true;
 						break;
 					case 2: // exit button
 						window.close();
@@ -73,17 +88,24 @@ int main()
 				break;
 			}
 		}
-		if (checked == true)
+		if (checkPlay == true)
 		{
 			onPlayClick(window);
 		}
 		else {
 			window.draw(sprite);
-
 			menu.draw(window);
 		}
-		window.display();
+		if (checkOptions == true)
+		{
+			onPlayClick(window);
+		}
+		else {
+			window.draw(sprite);
+			menu.draw(window);
+		}
 
+		window.display();
 		window.clear();
 	}
 }
