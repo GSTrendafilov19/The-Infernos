@@ -10,7 +10,7 @@ Menu::Menu(float width, float height)
 	}
 
 	menu[0].setFont(font);
-	menu[0].setOutlineColor(sf::Color::Red);
+	menu[0].setFillColor(sf::Color::Red);
 	menu[0].setString("Play");
 	menu[0].setStyle(sf::Text::Bold);
 	menu[0].setCharacterSize(44);
