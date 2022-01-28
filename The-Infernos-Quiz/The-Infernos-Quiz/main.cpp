@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Menu.h"
 #include "Button.h"
+#include "Quiz.h"
 
 void onPlayClick(sf::RenderWindow& window1)
 {
@@ -67,7 +68,9 @@ int main()
 					switch (menu.GetPressedItem())
 					{
 					case 0: // play button
-						std::cout << "Play button has been pressed" << std::endl;
+						//std::cout << "Play button has been pressed" << std::endl;
+						window.close();
+						startQuiz();
 						checkPlay = true;
 						break;
 					case 1: // option button
