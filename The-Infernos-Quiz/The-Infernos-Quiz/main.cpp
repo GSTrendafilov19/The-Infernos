@@ -7,7 +7,7 @@ int main()
 	Menu menu(window.getSize().x, window.getSize().y);
 	sf::Texture texture;
 
-	if (!texture.loadFromFile("textures/background-main.jpg"))
+	if (!texture.loadFromFile("textures/history.jpg"))
 	{
 		std::cout << "Could not load texture";
 	}
