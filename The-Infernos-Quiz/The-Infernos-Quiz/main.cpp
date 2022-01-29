@@ -91,15 +91,8 @@ int main()
 				break;
 			}
 		}
+
 		if (checkPlay == true)
-		{
-			onPlayClick(window);
-		}
-		else {
-			window.draw(sprite);
-			menu.draw(window);
-		}
-		if (checkOptions == true)
 		{
 			onPlayClick(window);
 		}
