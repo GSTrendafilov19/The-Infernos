@@ -4,7 +4,7 @@
 #include "Button.h"
 #include "Quiz.h"
 
-void onPlayClick(sf::RenderWindow& window1)
+void onPlayClick(sf::RenderWindow& window)
 {
 	sf::Texture texture;
 	if (!texture.loadFromFile("textures/history.jpg"))
@@ -13,7 +13,7 @@ void onPlayClick(sf::RenderWindow& window1)
 	}
 	sf::Sprite background(texture);
 
-	window1.draw(background);
+	window.draw(background);
 }
 
 void onPlayDisplay()

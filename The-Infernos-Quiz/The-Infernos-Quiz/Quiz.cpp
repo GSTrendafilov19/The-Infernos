@@ -1,18 +1,16 @@
 #include "Quiz.h"
 #include "SFML/Graphics.hpp"
+#include <iostream>
 
 void startQuiz() {
-    sf::Window window(sf::VideoMode(1180, 820), "Quiz");
+    sf::RenderWindow window(sf::VideoMode(1180, 820), "Quiz");
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+	sf::Texture texture;
+	if (!texture.loadFromFile("textures/history.jpg"))
+	{
+		std::cout << "Could not load texture";
+	}
+	sf::Sprite background(texture);
 
-        window.display();
-    }
+	window.draw(background);
 }
