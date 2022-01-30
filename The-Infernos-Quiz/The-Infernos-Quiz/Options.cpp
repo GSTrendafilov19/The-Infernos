@@ -1,8 +1,8 @@
-#include "Quiz.h"
+#include "Options.h"
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
-void startQuiz(sf::RenderWindow& window)
+void Options(sf::RenderWindow& window)
 {
 	sf::Texture texture;
 	if (!texture.loadFromFile("textures/history.jpg"))

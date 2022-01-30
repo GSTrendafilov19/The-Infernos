@@ -1,20 +1,12 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include "Menu.h"
-#include "Button.h"
 #include "Quiz.h"
+#include "Options.h"
 
-void onPlayClick(sf::RenderWindow& window)
-{
-	sf::Texture texture;
-	if (!texture.loadFromFile("textures/history.jpg"))
-	{
-		std::cout << "Could not load texture";
-	}
-	sf::Sprite background(texture);
 
-	window.draw(background);
-}
+void startQuiz(sf::RenderWindow& window);
+void Options(sf::RenderWindow& window);
 
 void onPlayDisplay()
 {
@@ -92,11 +84,16 @@ int main()
 
 		if (checkPlay == true)
 		{
-			onPlayClick(window);
+			startQuiz(window);
 		}
 		else {
 			window.draw(sprite);
 			menu.draw(window);
+		}
+
+		if (checkOptions == true)
+		{
+			Options(window);
 		}
 		window.display();
 		window.clear();
