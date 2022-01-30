@@ -20,7 +20,7 @@ void startQuiz(sf::RenderWindow& window)
 	text.setFont(font);
 	text.setString("Which event in the bulgarian history has happend the following year? ");
 	text.setCharacterSize(24);
-	text.setFillColor(sf::Color::Red);
+	text.setFillColor(sf::Color::White);
 
 	window.clear();
 	window.draw(background);

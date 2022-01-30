@@ -11,5 +11,18 @@ void Options(sf::RenderWindow& window)
 	}
 	sf::Sprite background(texture);
 
+	sf::Font font;
+	if (!font.loadFromFile("font/arial.ttf"))
+	{
+		std::cout << "Coudldn't load the file";
+	}
+	sf::Text text;
+	text.setFont(font);
+	text.setString("Some text");
+	text.setCharacterSize(24);
+	text.setFillColor(sf::Color::White);
+
+	window.clear();
 	window.draw(background);
+	window.draw(text);
 }
