@@ -68,9 +68,7 @@ int main()
 					switch (menu.GetPressedItem())
 					{
 					case 0: // play button
-						//std::cout << "Play button has been pressed" << std::endl;
-						window.close();
-						startQuiz();
+						std::cout << "Play button has been pressed" << std::endl;
 						checkPlay = true;
 						break;
 					case 1: // option button
@@ -100,8 +98,8 @@ int main()
 			window.draw(sprite);
 			menu.draw(window);
 		}
-
 		window.display();
 		window.clear();
+
 	}
 }

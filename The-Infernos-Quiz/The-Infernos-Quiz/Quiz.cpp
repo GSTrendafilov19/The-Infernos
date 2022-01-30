@@ -2,9 +2,9 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
-void startQuiz() {
-    sf::RenderWindow window(sf::VideoMode(1180, 820), "Quiz");
-
+void startQuiz()
+{
+	sf::RenderWindow window(sf::VideoMode(1180, 820), "HISTORY QUIZ");
 	sf::Texture texture;
 	if (!texture.loadFromFile("textures/history.jpg"))
 	{
