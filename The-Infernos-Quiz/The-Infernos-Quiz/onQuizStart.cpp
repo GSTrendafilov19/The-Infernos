@@ -1,16 +1,9 @@
-#include "Quiz.h"
-#include "SFML/Graphics.hpp"
 #include <iostream>
+#include "SFML/Graphics.hpp"
 
-void startQuiz(sf::RenderWindow& window)
+void onQuizStart(sf::RenderWindow& window)
 {
-	sf::Texture texture;
-	if (!texture.loadFromFile("textures/history.jpg"))
-	{
-		std::cout << "Could not load texture";
-	}
-	sf::Sprite background(texture);
-
+	std::cout << "working";
 	sf::Font font;
 	if (!font.loadFromFile("font/arial.ttf"))
 	{
@@ -19,10 +12,12 @@ void startQuiz(sf::RenderWindow& window)
 	sf::Text text;
 	text.setFont(font);
 	text.setString("Which event in the bulgarian history has happend the following year? ");
-	text.setCharacterSize(24);
+	text.setCharacterSize(44);
 	text.setFillColor(sf::Color::Red);
 
 	window.clear();
-	window.draw(background);
+
 	window.draw(text);
+
+	//window.draw(background);
 }

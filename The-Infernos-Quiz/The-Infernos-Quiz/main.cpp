@@ -8,21 +8,9 @@
 void startQuiz(sf::RenderWindow& window);
 void Options(sf::RenderWindow& window);
 
-void onPlayDisplay()
-{
-	sf::Font font;
-	if (!font.loadFromFile("font/arial.ttf"))
-	{
-		std::cout << "Coudldn't load the file";
-	}
-	sf::Text text;
-	text.setFont(font);
-	text.setString("Which event in the bulgarian history has happend the following year? ");
-	text.setFillColor(sf::Color::Red);
-}
-
 int main()
 {
+
 	sf::RenderWindow window(sf::VideoMode(1180, 820), "HISTORY QUIZ");
 	Menu menu(window.getSize().x, window.getSize().y);
 
@@ -37,6 +25,7 @@ int main()
 
 	bool checkPlay = false;
 	bool checkOptions = false;
+	bool quickCheck = false;
 
 	while (window.isOpen())
 	{
@@ -97,6 +86,5 @@ int main()
 		}
 		window.display();
 		window.clear();
-
 	}
 }
