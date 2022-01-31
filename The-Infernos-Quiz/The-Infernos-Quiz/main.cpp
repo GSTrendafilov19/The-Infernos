@@ -3,6 +3,7 @@
 #include "Menu.h"
 #include "Quiz.h"
 #include "Options.h"
+#include "Textbox.h"
 
 
 void startQuiz(sf::RenderWindow& window);
@@ -23,8 +24,11 @@ int main()
 	sf::Sprite sprite;
 	sprite.setTexture(background);
 
-	sf::String playerInput;
-	sf::Text playerText;
+	sf::Font arial;
+	arial.loadFromFile("font/arial.ttf");
+	Textbox textbox1(15, sf::Color::White,true);
+	textbox1.setFont(arial);
+	textbox1.setPosition({ 100,100 });
 
 	bool checkPlay = false;
 	bool checkOptions = false;
@@ -76,6 +80,7 @@ int main()
 		if (checkPlay == true)
 		{
 			startQuiz(window);
+			textbox1.drawTo(window);
 		}
 		else {
 			window.draw(sprite);
