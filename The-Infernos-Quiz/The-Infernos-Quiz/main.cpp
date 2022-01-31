@@ -74,6 +74,8 @@ int main()
 				window.close();
 
 				break;
+			case sf::Event::TextEntered:
+				textbox1.typedOn(event);
 			}
 		}
 
