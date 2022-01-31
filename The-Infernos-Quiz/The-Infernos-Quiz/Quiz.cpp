@@ -4,6 +4,7 @@
 
 void startQuiz(sf::RenderWindow& window)
 {
+
 	sf::Texture texture;
 	if (!texture.loadFromFile("textures/history.jpg"))
 	{

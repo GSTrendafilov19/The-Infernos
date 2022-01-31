@@ -16,13 +16,16 @@ void Options(sf::RenderWindow& window)
 	{
 		std::cout << "Coudldn't load the file";
 	}
-	sf::Text text;
-	text.setFont(font);
-	text.setString("Some text");
-	text.setCharacterSize(24);
-	text.setFillColor(sf::Color::White);
+
+	sf::Text changeColor;
+	changeColor.setFont(font);
+	changeColor.setString("Change Color");
+	changeColor.setStyle(sf::Text::Bold);
+	changeColor.setCharacterSize(44);
+	changeColor.setFillColor(sf::Color::White);
+	changeColor.setPosition(sf::Vector2f(1030 / 2, 820 / (2 + 1) * 1));
 
 	window.clear();
 	window.draw(background);
-	window.draw(text);
+	window.draw(changeColor);
 }

@@ -37,6 +37,7 @@ int main()
 	while (window.isOpen())
 	{
 		sf::Event event;
+
 		while (window.pollEvent(event))
 		{
 			switch (event.type)
@@ -55,11 +56,11 @@ int main()
 					switch (menu.GetPressedItem())
 					{
 					case 0: // play button
-						std::cout << "Play button has been pressed" << std::endl;
+						//std::cout << "Play button has been pressed" << std::endl;
 						checkPlay = true;
 						break;
 					case 1: // option button
-						std::cout << "Option button has been pressed" << std::endl;
+						//std::cout << "Option button has been pressed" << std::endl;
 						checkOptions = true;
 						break;
 					case 2: // exit button
