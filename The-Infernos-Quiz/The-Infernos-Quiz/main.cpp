@@ -23,6 +23,9 @@ int main()
 	sf::Sprite sprite;
 	sprite.setTexture(background);
 
+	sf::String playerInput;
+	sf::Text playerText;
+
 	bool checkPlay = false;
 	bool checkOptions = false;
 	bool quickCheck = false;
@@ -44,7 +47,6 @@ int main()
 				case sf::Keyboard::Down:
 					menu.MoveDown();
 					break;
-
 				case sf::Keyboard::Return:
 					switch (menu.GetPressedItem())
 					{
@@ -85,6 +87,5 @@ int main()
 			Options(window);
 		}
 		window.display();
-		window.clear();
 	}
 }
