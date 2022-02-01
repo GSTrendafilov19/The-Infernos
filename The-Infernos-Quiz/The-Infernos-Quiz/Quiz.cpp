@@ -19,11 +19,17 @@ void startQuiz(sf::RenderWindow& window)
 	}
 	sf::Text text;
 	text.setFont(font);
-	text.setString("Which event in the bulgarian history has happend the following year? ");
+	text.setString("Which event in the bulgarian history has happend the following year?");
 	text.setCharacterSize(24);
 	text.setFillColor(sf::Color::White);
+
+	sf::Text year;
+	year.setFont(font);
+	year.setString("917");
+	year.setPosition(sf::Vector2f(120 / 2, 70 / (2 + 1) * 2));
 
 	window.clear();
 	window.draw(background);
 	window.draw(text);
+	window.draw(year);
 }
