@@ -1,5 +1,6 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
+#include <fstream>
 #include "Menu.h"
 #include "Quiz.h"
 #include "Options.h"
@@ -11,6 +12,10 @@ void Options(sf::RenderWindow& window);
 
 int main()
 {
+
+	std::ofstream file("file.txt");
+	file << "Hello";
+	file.close();
 
 	sf::RenderWindow window(sf::VideoMode(1180, 820), "HISTORY QUIZ");
 	Menu menu(window.getSize().x, window.getSize().y);
