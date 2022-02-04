@@ -1,6 +1,5 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
-#include <fstream>
 #include "Menu.h"
 #include "Quiz.h"
 #include "Options.h"
@@ -12,11 +11,6 @@ void Options(sf::RenderWindow& window);
 
 int main()
 {
-
-	std::ofstream file("file.txt");
-	file << "Hello";
-	file.close();
-
 	sf::RenderWindow window(sf::VideoMode(1180, 820), "HISTORY QUIZ");
 	Menu menu(window.getSize().x, window.getSize().y);
 
@@ -37,7 +31,7 @@ int main()
 
 	bool checkPlay = false;
 	bool checkOptions = false;
-	bool quickCheck = false;
+	bool checkAddQuestion = false;
 
 	while (window.isOpen())
 	{
@@ -61,16 +55,18 @@ int main()
 					switch (menu.GetPressedItem())
 					{
 					case 0: // play button
-						//std::cout << "Play button has been pressed" << std::endl;
 						checkPlay = true;
 						break;
 					case 1: // option button
-						//std::cout << "Option button has been pressed" << std::endl;
 						checkOptions = true;
 						break;
-					case 2: // exit button
+					case 2: // add question
+						checkAddQuestion = true;
+						break;
+					case 3: // exit button
 						window.close();
 						break;
+
 					}
 
 					break;

@@ -1,10 +1,18 @@
 #include "Quiz.h"
-#include "SFML/Graphics.hpp"
-#include <iostream>
+
+
+void appendList(NODE* head, std::string str) {
+	if (head->next == NULL) {
+		head->next = new NODE;
+		head->next->val = str;
+		head->next->next = NULL;
+	}
+	else
+		appendList(head->next, str);
+}
 
 void startQuiz(sf::RenderWindow& window)
 {
-
 	sf::Texture texture;
 	if (!texture.loadFromFile("textures/history.jpg"))
 	{
@@ -19,7 +27,7 @@ void startQuiz(sf::RenderWindow& window)
 	}
 	sf::Text text;
 	text.setFont(font);
-	text.setString("Which event in the bulgarian history has happend the following year?");
+	text.setString("Which event in bulgarian history happend in the following year?");
 	text.setCharacterSize(24);
 	text.setFillColor(sf::Color::White);
 

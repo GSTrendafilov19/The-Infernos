@@ -148,7 +148,6 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Quiz.cpp" />
     <ClCompile Include="Options.cpp" />
-    <ClCompile Include="onQuizStart.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Options.h" />
