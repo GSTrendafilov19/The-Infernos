@@ -9,7 +9,7 @@
   <hr>
   <h1>💻 About  </h1>
   <p> 
-  <big> Our historical quiz can help a lot of people find their mistakes or practice.</big></p>
+  <big> Our history quiz can help a lot of people find their mistakes or practice.</big></p>
    
 
 
