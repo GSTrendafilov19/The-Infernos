@@ -21,7 +21,7 @@
   <p>To download our quiz-game you need to do just following thing: <br> </p>
   <ol>
     <li>Clone it.</li>
-    <pre>TO BE ADDED</pre>
+    <pre>git clone https://github.com/GSTrendafilov19/The-Infernos.git</pre>
   </ol>
   
   <h1>⌨️ How to start</h1>
