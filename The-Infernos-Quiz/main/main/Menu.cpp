@@ -1,62 +1,87 @@
 #include "Menu.h"
 #include "UserInput.h"
 
-void helpMenu() {
-	cout << "placeholder for how and why this is";
-	cout << "\n\npress any key to go back";
-	userInput();
+#include <iostream>
+// #define is used to allow us to give a name to a constant value before the program is compiled
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+
+using namespace std;
+
+
+//Used to replace 'system("cls")'
+void clearScreen()
+{
+	COORD cursorPosition;
+
+	cursorPosition.X = 0;
+	cursorPosition.Y = 0;
+
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursorPosition);
 }
 
-void optionsDisplay(string str, bool chosen) {
-	//error handler
-	HANDLE hdlOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	if (hdlOut == INVALID_HANDLE_VALUE)
-	{
-		cerr << "Encountered an Error: " << GetLastError();
-		system("cls");
-	}
-	//highlit the chosen text
-	if (chosen)
-		SetConsoleTextAttribute(hdlOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-	cout << str << endl;
-	SetConsoleTextAttribute(hdlOut, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
+//Prints Main menu
+void menu(string arrow, int arrowPos) {
+	cout << "*--------------------------------------*" << endl;
+	cout << ":                                      :" << endl;
+	if (arrowPos == 0)
+		cout << ":            " << arrow << "  Play                 :" << endl;
+	else
+		cout << ":                 Play                 :" << endl;
+	cout << ":                                      :" << endl;
+	if (arrowPos == 1)
+		cout << ":            " << arrow << "  Options              :" << endl;
+	else
+		cout << ":                 Options              :" << endl;
+	cout << ":                                      :" << endl;
+	if (arrowPos == 2)
+		cout << ":            " << arrow << "  Exit                 :" << endl;
+	else
+		cout << ":                 Exit                 :" << endl;
+	cout << ":                                      :" << endl;
+	cout << ":     Use Space or Enter to choose     :" << endl;
+	cout << ":                                      :" << endl;
+	cout << "*--------------------------------------*" << endl;
 }
 
-void menu() {
-	int choice = 0;
-	bool running = true;
-	while (running) {
-		system("cls");
-		//options
-		optionsDisplay("Play", choice == 0);
-		optionsDisplay("Help", choice == 1);
-		optionsDisplay("Add questions", choice == 2);
-		optionsDisplay("Exit", choice == 3);
-
-		//take user input
-		int input = userInput();
-		if (input == 0 && choice != 0)
-			choice--;
-		if (input == 2 && choice != 3)
-			choice++;
-
-		//select an option
-		if (input == -2) {
-			system("cls");
-			switch (choice) {
-				case 0:
-					//start the quiz
-					break;
-				case 1:
-					helpMenu();
-					break;
-				case 2:
-					//add questions menu
-					break;
-				case 3:
-					running = false;
-					break;
+//Choose whether to Play, change Options or Exit
+int chooseMenu(string arrow, int arrowPos) {
+	while (1) {
+		menu(arrow, arrowPos);
+		switch (_getch()) {
+		case 32:
+		case '\r':
+			if (arrowPos == 2) {
+				exit(0);
 			}
+			break;
+		case KEY_UP:
+		case 'W':
+		case 'w':
+			if (arrowPos != 0)
+				arrowPos--;
+			break;
+		case KEY_DOWN:
+		case 'S':
+		case 's':
+			if (arrowPos != 2)
+				arrowPos++;
+			break;
 		}
+		clearScreen();
 	}
+}
+//prints Winning text
+void winningText() {
+	cout << "*-----------------------------------------------------------*" << endl;
+	cout << "|  __   __  _______  __   __    _     _  ___   __    _  __  |" << endl;
+	cout << "| |  | |  ||       ||  | |  |  | | _ | ||   | |  |  | ||  | |" << endl;
+	cout << "| |  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| ||  | |" << endl;
+	cout << "| |       ||  | |  ||  |_|  |  |       ||   | |       ||  | |" << endl;
+	cout << "| |_     _||  |_|  ||       |  |       ||   | |  _    ||__| |" << endl;
+	cout << "|   |   |  |       ||       |  |   _   ||   | | | |   | __  |" << endl;
+	cout << "|   |___|  |_______||_______|  |__| |__||___| |_|  |__||__| |" << endl;
+	cout << "*-----------------------------------------------------------*" << endl;
 }

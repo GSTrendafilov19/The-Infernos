@@ -3,5 +3,5 @@
 #include <Windows.h>
 using namespace std;
 
-void menu();
-void menuNew(string arrow, int arrowPos);
+void menu(string arrow, int arrowPos);
+int chooseMenu(string arrow, int arrowPos);
