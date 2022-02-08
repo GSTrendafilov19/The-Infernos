@@ -1,7 +1,7 @@
+#include <iostream>
+
 #include "Menu.h"
 #include "UserInput.h"
-
-#include <iostream>
 // #define is used to allow us to give a name to a constant value before the program is compiled
 #define KEY_UP 72
 #define KEY_DOWN 80
@@ -24,26 +24,36 @@ void clearScreen()
 
 //Prints Main menu
 void menu(string arrow, int arrowPos) {
-	cout << "*--------------------------------------*" << endl;
-	cout << ":                                      :" << endl;
+	cout << "*------------------------------------------*" << endl;
+	cout << ":                                          :" << endl;
+	cout << ":   *******      **     **   **   ******** :" <<  endl;
+	cout << ":  **/////**    /**    /**  /**  //////**  :" << endl;
+	cout << ": **     //**   /**    /**  /**       **   :" << endl;
+	cout << ":/**      /**   /**    /**  /**      **    :" << endl;
+	cout << ":/**    **/**   /**    /**  /**     **     :" << endl;
+	cout << "://**  // **    /**    /**  /**    **      :" << endl;
+	cout << ": //******* **  //*******   /**   ******** :" << endl;
+	cout << ":  /////// //    ///////    //   ////////  :" << endl;
+	cout << ":                                          :" << endl;
+
 	if (arrowPos == 0)
-		cout << ":            " << arrow << "  Play                 :" << endl;
+	cout << ":            " << arrow << "  Play                     :" << endl;
 	else
-		cout << ":                 Play                 :" << endl;
-	cout << ":                                      :" << endl;
+	cout << ":                 Play                     :" << endl;
+	cout << ":                                          :" << endl;
 	if (arrowPos == 1)
-		cout << ":            " << arrow << "  Options              :" << endl;
+	cout << ":            " << arrow << "  Options                  :" << endl;
 	else
-		cout << ":                 Options              :" << endl;
-	cout << ":                                      :" << endl;
+	cout << ":                 Options                  :" << endl;
+	cout << ":                                          :" << endl;
 	if (arrowPos == 2)
-		cout << ":            " << arrow << "  Exit                 :" << endl;
+	cout << ":            " << arrow << "  Exit                     :" << endl;
 	else
-		cout << ":                 Exit                 :" << endl;
-	cout << ":                                      :" << endl;
-	cout << ":     Use Space or Enter to choose     :" << endl;
-	cout << ":                                      :" << endl;
-	cout << "*--------------------------------------*" << endl;
+	cout << ":                 Exit                     :" << endl;
+	cout << ":                                          :" << endl;
+	cout << ":     Use Space or Enter to choose         :" << endl;
+	cout << ":                                          :" << endl;
+	cout << "*------------------------------------------*" << endl;
 }
 
 //Choose whether to Play, change Options or Exit
