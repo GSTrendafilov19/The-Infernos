@@ -1,38 +1,6 @@
 #include "Menu.h"
 #include "UserInput.h"
 
-void menuNew(string arrow, int arrowPos) {
-	cout << "*--------------------------------------*" << endl;
-	cout << ":                                      :" << endl;
-	cout << ":  __   __  _______  _______  _______  :" << endl;
-	cout << ": |  |_|  ||   _   ||       ||       | :" << endl;
-	cout << ": |       ||  |_|  ||____   ||    ___| :" << endl;
-	cout << ": |       ||       | ____|  ||   |___  :" << endl;
-	cout << ": |       ||       || ______||    ___| :" << endl;
-	cout << ": | ||_|| ||   _   || |_____ |   |___  :" << endl;
-	cout << ": |_|   |_||__| |__||_______||_______| :" << endl;
-	cout << ":                                      :" << endl;
-	cout << ":                                      :" << endl;
-	if (arrowPos == 0)
-		cout << ":            " << arrow << "  Play                 :" << endl;
-	else
-		cout << ":                 Play                 :" << endl;
-	cout << ":                                      :" << endl;
-	if (arrowPos == 1)
-		cout << ":            " << arrow << "  Options              :" << endl;
-	else
-		cout << ":                 Options              :" << endl;
-	cout << ":                                      :" << endl;
-	if (arrowPos == 2)
-		cout << ":            " << arrow << "  Exit                 :" << endl;
-	else
-		cout << ":                 Exit                 :" << endl;
-	cout << ":                                      :" << endl;
-	cout << ":     Use Space or Enter to choose     :" << endl;
-	cout << ":                                      :" << endl;
-	cout << "*--------------------------------------*" << endl;
-}
-
 void helpMenu() {
 	cout << "placeholder for how and why this is";
 	cout << "\n\npress any key to go back";
