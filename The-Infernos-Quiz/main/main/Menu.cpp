@@ -10,6 +10,8 @@
 
 using namespace std;
 
+void chooseMenu(string arrow, int arrowPos = 0);
+void chooseOptions(string arrow, int arrowPos = 0);
 
 //Used to replace 'system("cls")' in order to reduce flickering
 void clearScreen()
@@ -129,11 +131,42 @@ void colorMenu(string arrow, int arrowPos) {
 	cout << ":                                                         :" << endl;
 	cout << "*---------------------------------------------------------*" << endl;
 }
-int chooseColor(string arrow, int arrowPos) {
-	arrowPos = 0;
+int chooseColor(string arrow, int arrowPos = 0) {
 	while (1) {
 		colorMenu(arrow, arrowPos);
-		switch (_getch()) {
+		int input = userInput();
+		//Move the arrow position
+		if (input == 1 && arrowPos != 0)
+			arrowPos--;
+		if (input == 2 && arrowPos != 5)
+			arrowPos++;
+
+		//select an option
+		if (input == 0) {
+			switch (arrowPos) {
+			case 0:
+				system("color 3");
+				break;
+			case 1:
+				system("color 2");
+				break;
+			case 2:
+				system("color 4");
+				break;
+			case 3:
+				system("color 5");
+				break;
+			case 4:
+				system("color 7");
+				break;
+			case 5:
+				system("cls");
+				chooseOptions(arrow);
+				break;
+			}
+		}
+
+		/* (_getch()) {
 		case 32:
 		case '\r':
 			if (arrowPos == 0) {
@@ -168,87 +201,72 @@ int chooseColor(string arrow, int arrowPos) {
 			if (arrowPos != 5)
 				arrowPos++;
 			break;
-		}
+		}*/
 		clearScreen();
 	}
 }
 
-int chooseOptions(string arrow, int arrowPos) {
-	arrowPos = 0;
+void chooseOptions(string arrow, int arrowPos) {
 	while (1) {
 		options(arrow, arrowPos);
-		switch (_getch()) {
-		case 32:
-		case '\r':
-			if (arrowPos == 0) {
+		int input = userInput();
+
+		//Move the arrow position
+		if (input == 1 && arrowPos != 0)
+			arrowPos--;
+		if (input == 2 && arrowPos != 1)
+			arrowPos++;
+
+		//select an option
+		if (input == 0) {
+			switch (arrowPos) {
+			case 0:
 				system("cls");
-				chooseColor(arrow, arrowPos);
-				arrowPos = 0;
-			}
-			else if (arrowPos == 1) {
+				chooseColor(arrow);
+				break;
+			case 1:
 				system("cls");
-				return 0;
+				chooseMenu(arrow);
+				break;
 			}
-			break;
-		case KEY_UP:
-		case 'W':
-		case 'w':
-			if (arrowPos != 0)
-				arrowPos--;
-			break;
-		case KEY_DOWN:
-		case 'S':
-		case 's':
-			if (arrowPos != 2)
-				arrowPos++;
-			break;
 		}
+
 		clearScreen();
 	}
 }
 
 
 //Choose whether to Play, change Options or Exit
-int chooseMenu(string arrow, int arrowPos) {
+void chooseMenu(string arrow, int arrowPos) {
 	while (1) {
 		menu(arrow, arrowPos);
-		switch (_getch()) {
-		case 32:
-		case '\r':
-			if (arrowPos == 0) {
+		int input = userInput();
+
+		//Move the arrow position
+		if (input == 1 && arrowPos != 0)
+			arrowPos--;
+		if (input == 2 && arrowPos != 2)
+			arrowPos++;
+
+		//select an option
+		if (input == 0) {
+			switch (arrowPos) {
+			case 0:
+				//play quiz
+				break;
+			case 1:
 				system("cls");
-				//chooseDifficulty(arrow, arrowPos, size);
-				switch (arrowPos) {
-				case 3: arrowPos = 0; break;
-				default: return 0; break;
-				}
-			}
-			else if (arrowPos == 1) {
-				system("cls");
-				chooseOptions(arrow, arrowPos);
-				arrowPos = 0;
-			}
-			else if (arrowPos == 2) {
-				system("cls");
+				chooseOptions(arrow);
+				break;
+			case 2:
 				exit(0);
 			}
-			break;
-		case KEY_UP:
-		case 'W':
-		case 'w':
-			if (arrowPos != 0)
-				arrowPos--;
-			break;
-		case KEY_DOWN:
-		case 'S':
-		case 's':
-			if (arrowPos != 2)
-				arrowPos++;
-			break;
 		}
 		clearScreen();
 	}
 }
+
+
 //prints Winning text
 void winningText() {
 	cout << "*-----------------------------------------------------------*" << endl;

@@ -1,35 +1,28 @@
 #include "UserInput.h"
 
-int userInput() {
-	//take user input
-	int input = _getch();
+// #define is used to allow us to give a name to a constant value before the program is compiled
 
-	switch (input) {
-		//up arrow
-		case 72:
-			return 0;
-			break;
-		//right arrow
-		case 77:
-			return 1;
-			break;
-		//down arrow
-		case 80:
-			return 2;
-			break;
-		//left arrow
-		case 75:
-			return 3;
-			break;
-		//esc
-		case 27:
-			return -1;
-			break;
-		//enter
-		case '\r':
-			return -2;
-			break;
-		default:
-			return -3;
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+
+
+int userInput() {
+	switch (_getch()) {
+	case 32:
+	case '\r':
+		return 0;
+		break;
+	case KEY_UP:
+	case 'W':
+	case 'w':
+		return 1;
+		break;
+	case KEY_DOWN:
+	case 'S':
+	case 's':
+		return 2;
+		break;
 	}
 }
