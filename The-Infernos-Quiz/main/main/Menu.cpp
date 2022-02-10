@@ -2,6 +2,7 @@
 
 #include "Menu.h"
 #include "UserInput.h"
+
 // #define is used to allow us to give a name to a constant value before the program is compiled
 #define KEY_UP 72
 #define KEY_DOWN 80
@@ -72,11 +73,18 @@ void options(string arrow, int arrowPos) {
 	cout << ":                                                              :" << endl;
 	cout << ":                                                              :" << endl;
 	if (arrowPos == 0)
+		cout << ":                       " << arrow << "  Add questions                     :" << endl;
+	else
+		cout << ":                            Add questions                     :" << endl;
+	cout << ":                                                              :" << endl;
+
+	if (arrowPos == 1)
 		cout << ":                       " << arrow << "  Color                             :" << endl;
 	else
 		cout << ":                            Color                             :" << endl;
 	cout << ":                                                              :" << endl;
-	if (arrowPos == 1)
+
+	if (arrowPos == 2)
 		cout << ":                       " << arrow << "  Back                              :" << endl;
 	else
 		cout << ":                            Back                              :" << endl;
@@ -85,6 +93,7 @@ void options(string arrow, int arrowPos) {
 	cout << ":                                                              :" << endl;
 	cout << "*--------------------------------------------------------------*" << endl;
 }
+
 void colorMenu(string arrow, int arrowPos) {
 	cout << "*---------------------------------------------------------*" << endl;
 	cout << ":                                                         :" << endl;
@@ -131,10 +140,12 @@ void colorMenu(string arrow, int arrowPos) {
 	cout << ":                                                         :" << endl;
 	cout << "*---------------------------------------------------------*" << endl;
 }
+
 int chooseColor(string arrow, int arrowPos = 0) {
 	while (1) {
 		colorMenu(arrow, arrowPos);
 		int input = userInput();
+
 		//Move the arrow position
 		if (input == 1 && arrowPos != 0)
 			arrowPos--;
@@ -166,42 +177,6 @@ int chooseColor(string arrow, int arrowPos = 0) {
 			}
 		}
 
-		/* (_getch()) {
-		case 32:
-		case '\r':
-			if (arrowPos == 0) {
-				system("color 3");
-			}
-			else if (arrowPos == 1) {
-				system("color 2");
-			}
-			else if (arrowPos == 2) {
-				system("color 4");
-			}
-			else if (arrowPos == 3) {
-				system("color 5");
-			}
-			else if (arrowPos == 4) {
-				system("color 7");
-			}
-			else if (arrowPos == 5) {
-				system("cls");
-				return 0;
-			}
-			break;
-		case KEY_UP:
-		case 'W':
-		case 'w':
-			if (arrowPos != 0)
-				arrowPos--;
-			break;
-		case KEY_DOWN:
-		case 'S':
-		case 's':
-			if (arrowPos != 5)
-				arrowPos++;
-			break;
-		}*/
 		clearScreen();
 	}
 }
@@ -214,17 +189,20 @@ void chooseOptions(string arrow, int arrowPos) {
 		//Move the arrow position
 		if (input == 1 && arrowPos != 0)
 			arrowPos--;
-		if (input == 2 && arrowPos != 1)
+		if (input == 2 && arrowPos != 2)
 			arrowPos++;
 
 		//select an option
 		if (input == 0) {
 			switch (arrowPos) {
 			case 0:
+				//add questions
+				break;
+			case 1:
 				system("cls");
 				chooseColor(arrow);
 				break;
-			case 1:
+			case 2:
 				system("cls");
 				chooseMenu(arrow);
 				break;

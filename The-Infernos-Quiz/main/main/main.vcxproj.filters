@@ -24,12 +24,18 @@
     <ClCompile Include="UserInput.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Quiz.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UserInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Quiz.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
