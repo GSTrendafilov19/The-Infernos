@@ -4,10 +4,11 @@
 NODE* head = new NODE;
 
 void NODE::inputQuestion(NODE* head) {
-	cin.ignore();
+	system("cls");
 	string historicalEvent;
 	int day, month, year;
 	cout << "Input an event:\n";
+	cin.clear();
 	getline(cin, historicalEvent, '\n');
 	cout << "When did the event happen? (dd/mm/yy, 0 if it's unknown)\n";
 	cin >> day >> month >> year;
@@ -18,7 +19,8 @@ void NODE::inputQuestion(NODE* head) {
 		system("pause");
 		inputQuestion(head);
 	}
-	head->appendNode(head, historicalEvent, day, month, year);
+	else
+		head->appendNode(head, historicalEvent, day, month, year);
 }
 
 
@@ -36,25 +38,38 @@ void NODE::appendNode(NODE* head, string val, int day, int month, int year) {
 }
 
 void NODE::removeQuestion(NODE* head) {
-	int index;
-	cout << "Which event do you want to remove?\n";
-	cin >> index;
-	if (index <= lengthOfList(head)) {
-		if (index == 1)
-			*head = *head->removeFirstNode(head);
-		else
-			head->removeSpecialNode(head, index);
+	system("cls");
+	int index, length = lengthOfList(head);;
+
+	if (length == 1) {
+		cout << "You cannot remove all events\n";
+		system("pause");
 	}
 	else {
-		cout << "Incorrect event index\n";
-		system("pause");
-		removeQuestion(head);
+
+		head->displayList(head);
+		cout << "Which event do you want to remove?\n";
+		cin >> index;
+
+		if (index <= length) {
+			if (index == 1)
+				*head = *head->removeFirstNode(head);
+			else
+				head->removeSpecialNode(head, index);
+		}
+		else {
+			cout << "Incorrect event index\n";
+			system("pause");
+			removeQuestion(head);
+		}
 	}
 }
 
 void NODE::removeSpecialNode(NODE* head, int i, NODE* prev) {
-	if(i == 1)
+	if (i == 1) {
 		prev->next = head->next;
+		delete head;
+	}
 	else
 		removeSpecialNode(head->next, i-1, head);
 }
