@@ -14,7 +14,6 @@ using namespace std;
 
 void chooseMenu(string arrow, int arrowPos = 0);
 void chooseOptions(string arrow, int arrowPos = 0);
-void addQuestions();
 
 //Used to replace 'system("cls")' in order to reduce flickering
 void clearScreen()
@@ -198,7 +197,7 @@ void chooseOptions(string arrow, int arrowPos) {
 		if (input == 0) {
 			switch (arrowPos) {
 			case 0:
-				addQuestions();
+				addQuestion();
 				break;
 			case 1:
 				system("cls");
