@@ -2,6 +2,7 @@
 
 #include "Menu.h"
 #include "UserInput.h"
+#include "Quiz.h"
 
 // #define is used to allow us to give a name to a constant value before the program is compiled
 #define KEY_UP 72
@@ -13,6 +14,7 @@ using namespace std;
 
 void chooseMenu(string arrow, int arrowPos = 0);
 void chooseOptions(string arrow, int arrowPos = 0);
+void addQuestions();
 
 //Used to replace 'system("cls")' in order to reduce flickering
 void clearScreen()
@@ -196,7 +198,7 @@ void chooseOptions(string arrow, int arrowPos) {
 		if (input == 0) {
 			switch (arrowPos) {
 			case 0:
-				//add questions
+				addQuestions();
 				break;
 			case 1:
 				system("cls");

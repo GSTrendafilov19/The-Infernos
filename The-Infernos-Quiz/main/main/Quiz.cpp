@@ -6,5 +6,5 @@ void startQuiz() {
 
 void addQuestions() {
 	cout << "Set a question\n";
-	cin >> 
+	//cin >> 
 }
