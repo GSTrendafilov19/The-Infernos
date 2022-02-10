@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 
 class NODE {
@@ -13,12 +14,18 @@ class NODE {
 		NODE* next;
 
 		void inputQuestion(NODE* head);
-		void removeSpecialNode(NODE* head, string val, NODE* prev = NULL);
-		void appendNode(NODE* head, string val);
-		void displayList(NODE* head);
+		void appendNode(NODE* head, string val, int day, int month, int year);
+
+		void removeQuestion(NODE* head);
+		void removeSpecialNode(NODE* head, int i, NODE* prev = NULL);
+		NODE* removeFirstNode(NODE* head);
+		int lengthOfList(NODE* head);
+
+		void displayList(NODE* head, int i = 1);
+
 		void insertAfter(NODE* head, string valSearch, int val);
 		NODE* prependNode(NODE* head, int val);
 		bool searchElement(NODE* head, string val);
 };
 
-void addQuestion();
+void addQuestion(string arrow);

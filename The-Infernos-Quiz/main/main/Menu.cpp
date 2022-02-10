@@ -197,7 +197,8 @@ void chooseOptions(string arrow, int arrowPos) {
 		if (input == 0) {
 			switch (arrowPos) {
 			case 0:
-				addQuestion();
+				system("cls");
+				addQuestion(arrow);
 				break;
 			case 1:
 				system("cls");
