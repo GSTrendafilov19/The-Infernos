@@ -20,6 +20,8 @@
   <h1>📥 How to Download</h1>
   <p>To download our quiz-game you need to do just following thing: <br> </p>
   <ol>
+    <li>Initialize git repository.</li>
+    <pre>git init</pre>
     <li>Clone it.</li>
     <pre>git clone https://github.com/GSTrendafilov19/The-Infernos.git</pre>
   </ol>
@@ -30,8 +32,8 @@
 
   <p>
     <h1> 👨‍💻 Our Team</h1>
-    <p> • <a href = "https://github.com/GSTrendafilov19"> GSTrendafilov19</a> - Scrum Trainer </p>
-	<p> • <a href = "https://github.com/BDSimeonov19"> BDSimeonov19</a> - Front-end Developer </p>
-	<p> • <a href = "https://github.com/SMDimitrov19"> SMDimitrov19</a> - Back-end Developer </p>
-	<p> • <a href = "https://github.com/GAVasilev19"> GAVasilev19</a> - QA Engineer </p>
+    <p> • <a href = "https://github.com/GSTrendafilov19"> Georgi Trendafilov</a> - Scrum Trainer </p>
+	<p> • <a href = "https://github.com/BDSimeonov19"> Boris Simeonov</a> - Front-end Developer </p>
+	<p> • <a href = "https://github.com/SMDimitrov19"> Stanimir Dimitrov</a> - Back-end Developer </p>
+	<p> • <a href = "https://github.com/GAVasilev19"> Georgi Vasilev</a> - QA Engineer </p>
 	</p>
