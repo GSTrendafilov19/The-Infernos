@@ -6,15 +6,14 @@ void clearScreen();
 NODE* head = new NODE;
 
 void NODE::inputQuestion(NODE* head) {
-	void clearScreen();
+	system("cls");
 	string historicalEvent;
 	int day, month, year;
 	cout << "Input an event:\n";
-	cin.clear();
+	cin.ignore();
 	getline(cin, historicalEvent, '\n');
 	cout << "When did the event happen? (dd/mm/yy, 0 if it's unknown)\n";
 	cin >> day >> month >> year;
-	cin.ignore();
 
 	if (day < 0 || day > 31 || month < 0 || month > 12 || year < 1 || year > 2022) {
 		cout << "Incorrect date\n";
@@ -40,7 +39,7 @@ void NODE::appendNode(NODE* head, string val, int day, int month, int year) {
 }
 
 void NODE::removeQuestion(NODE* head) {
-	void clearScreen();
+	system("cls");
 	int index, length = lengthOfList(head);;
 
 	if (length == 1) {
@@ -124,10 +123,10 @@ NODE::NODE() {
 }
 
 void addQuestionMenu(string arrow, int arrowPos) {
-	cout << "*-------------------------------*" << endl;
-	cout << ":                               :" << endl;
-	cout << ":   ______ _____ _____ _______  :" << endl;
-	cout << ":  |  ____|  __ \\_   _|__   __| :" << endl;
+	cout << "*-------------------------------*                        " << endl;
+	cout << ":                               :                        " << endl;
+	cout << ":   ______ _____ _____ _______  :                        " << endl;
+	cout << ":  |  ____|  __ \\_   _|__   __| :                       " << endl;
 	cout << ":  | |__  | |  | || |    | |    :" << endl;
 	cout << ":  |  __| | |  | || |    | |    :" << endl;
 	cout << ":  | |____| |__| || |_   | |    :" << endl;
