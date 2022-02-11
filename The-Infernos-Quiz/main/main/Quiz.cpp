@@ -1,10 +1,12 @@
 #include "Quiz.h"
 #include "UserInput.h"
 
+void clearScreen();
+
 NODE* head = new NODE;
 
 void NODE::inputQuestion(NODE* head) {
-	system("cls");
+	void clearScreen();
 	string historicalEvent;
 	int day, month, year;
 	cout << "Input an event:\n";
@@ -38,7 +40,7 @@ void NODE::appendNode(NODE* head, string val, int day, int month, int year) {
 }
 
 void NODE::removeQuestion(NODE* head) {
-	system("cls");
+	void clearScreen();
 	int index, length = lengthOfList(head);;
 
 	if (length == 1) {
@@ -190,7 +192,7 @@ void addQuestion(string arrow) {
 				break;
 			}
 		}
-		system("cls");
+		clearScreen();
 	}
 
 }
