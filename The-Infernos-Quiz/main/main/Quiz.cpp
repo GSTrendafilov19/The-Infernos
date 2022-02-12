@@ -5,6 +5,7 @@
 void clearScreen();
 
 NODE* head = new NODE;
+string answers[4];
 
 void NODE::inputQuestion(NODE* head) {
 	system("cls");
@@ -130,6 +131,17 @@ void NODE::displayNode(NODE head, int i, bool year) {
 		head.displayNode(*(head.next), i - 1, year);
 }
 
+string NODE::returnData(NODE head, int i, bool year) {
+	if (i != 0)
+		return head.returnData(*(head.next), i - 1, year);
+	else {
+		if (year)
+			return (to_string(head.day) + '/' + to_string(head.month) + '/' + to_string(head.year));
+		else
+			return head.data;
+	}
+}
+
 NODE::NODE() {
 	next = NULL;
 }
@@ -209,17 +221,76 @@ void addQuestion(string arrow) {
 
 }
 
-void answerOptions(NODE clone, int question, GRand rand, int posOfAnswer, int i = 4, bool year = false) {
-	if (i != 0) {
-		if (i - 1 == posOfAnswer)
-			clone.displayNode(clone, question, year);
+
+void highlightOption(string str, bool chosen) {
+	//highlight the chosen text
+	if (chosen)
+		cout << "-->";
+	cout << str << endl;
+}
+
+void answerOptions(NODE clone, int question, GRand rand, int answerPos, bool year = false) {
+	for(int i = 0; i < 4; i++){
+		if (i == answerPos)
+			answers[i] = clone.returnData(clone, question, year);
 		else {
 			int random = rand.i(clone.lengthOfList(clone));
 			while(random == question)
 				random = rand.i();
-			clone.displayNode(clone, random, year);
+			answers[i] = clone.returnData(clone, random, year);
 		}
-		answerOptions(clone, question, rand, posOfAnswer, i - 1, year);
+	}
+}
+
+void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE clone, int question) {
+	int arrowPos = 0;
+	while (true) {
+
+		//event prompt
+		if (eventPrompt)
+			cout << "When did the following event occur?\n";
+		//date prompt
+		else
+			cout << "What event occured on the following date?\n";
+
+
+		clone.displayNode(clone, question, !eventPrompt);
+		cout << endl;
+
+		for (int i = 0; i < 4; i++)
+			highlightOption(answers[i], arrowPos == i);
+
+		
+		int input = userInput();
+
+		//Move the arrow position
+		if (input == 1 && arrowPos != 0)
+			arrowPos--;
+		if (input == 2 && arrowPos != 3)
+			arrowPos++;
+
+
+		//select an option
+		if (input == 0) {
+			if (arrowPos == answerPos) {
+				system("cls");
+				cout << "Correct!\n";
+				system("pause");
+				break;
+			}
+			else if (arrowPos == 4) {
+				//go back
+			}
+			else {
+				system("cls");
+				cout << "Incorrect. The correct answer was:\n" << answers[answerPos] << endl;
+				system("pause");
+				break;
+			}
+
+		}
+
+		system("cls");
 	}
 }
 
@@ -239,24 +310,11 @@ void startQuiz() {
 		while (running) {
 			system("cls");
 			int question = rand.i(length);
-			//event prompt
-			if (rand.b()) {
-				cout << "When did the following event occur?\n";
-				clone.displayNode(clone, question);
-				cout << endl;
-				int posOfAnswer = rand.i(4);
-				answerOptions(clone, question, rand, posOfAnswer, true);
-			}
-			//year prompt
-			else {
-				cout << "What event occured in the following year?\n";
-				clone.displayNode(clone, question, true);
-				cout << endl;
-				int posOfAnswer = rand.i(4);
-				answerOptions(clone, question, rand, posOfAnswer);
-			}
-			cout << endl;
-			system("pause");
+			bool eventPrompt = rand.b();
+			int answerPos = rand.i(4);
+
+			answerOptions(clone, question, rand, answerPos, eventPrompt);
+			quizMenu(answers, answerPos, eventPrompt, clone, question);
 		}
 	}
 }

@@ -27,6 +27,7 @@ class NODE {
 		NODE* prependNode(NODE* head, int val);
 		bool searchElement(NODE head, string val);
 		void displayNode(NODE head, int i, bool year = 0);
+		string returnData(NODE head, int i, bool year);
 };
 
 void addQuestion(string arrow);
