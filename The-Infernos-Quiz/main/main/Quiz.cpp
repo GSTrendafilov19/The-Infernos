@@ -259,6 +259,9 @@ void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE clone, int
 
 		for (int i = 0; i < 4; i++)
 			highlightOption(answers[i], arrowPos == i);
+		cout << "\n\n\n";
+
+		highlightOption("Add more questions", arrowPos == 4);
 
 		
 		int input = userInput();
@@ -266,7 +269,7 @@ void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE clone, int
 		//Move the arrow position
 		if (input == 1 && arrowPos != 0)
 			arrowPos--;
-		if (input == 2 && arrowPos != 3)
+		if (input == 2 && arrowPos != 4)
 			arrowPos++;
 
 
@@ -279,7 +282,8 @@ void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE clone, int
 				break;
 			}
 			else if (arrowPos == 4) {
-				//go back
+				system("cls");
+				addQuestion("-->");
 			}
 			else {
 				system("cls");
@@ -287,9 +291,7 @@ void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE clone, int
 				system("pause");
 				break;
 			}
-
 		}
-
 		system("cls");
 	}
 }
@@ -297,6 +299,7 @@ void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE clone, int
 void startQuiz() {
 	NODE clone = *head;
 	int length = clone.lengthOfList(clone);
+	
 	//check if the list is eligible for a quiz
 	if (length < 5) {
 		cout << "You can't start a quiz with less than 5 questions.\n";
@@ -305,8 +308,8 @@ void startQuiz() {
 	}
 
 	else {
-		GRand rand;
 		bool running = true;
+		GRand rand;
 		while (running) {
 			system("cls");
 			int question = rand.i(length);
