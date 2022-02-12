@@ -209,6 +209,20 @@ void addQuestion(string arrow) {
 
 }
 
+void answerOptions(NODE clone, int question, GRand rand, int posOfAnswer, int i = 4, bool year = false) {
+	if (i != 0) {
+		if (i - 1 == posOfAnswer)
+			clone.displayNode(clone, question, year);
+		else {
+			int random = rand.i(clone.lengthOfList(clone));
+			while(random == question)
+				random = rand.i();
+			clone.displayNode(clone, random, year);
+		}
+		answerOptions(clone, question, rand, posOfAnswer, i - 1, year);
+	}
+}
+
 void startQuiz() {
 	NODE clone = *head;
 	int length = clone.lengthOfList(clone);
@@ -221,11 +235,28 @@ void startQuiz() {
 
 	else {
 		GRand rand;
-
-		//event prompt
-		//if (rand.b()) {
-			clone.displayNode(clone, rand.i(length));
+		bool running = true;
+		while (running) {
+			system("cls");
+			int question = rand.i(length);
+			//event prompt
+			if (rand.b()) {
+				cout << "When did the following event occur?\n";
+				clone.displayNode(clone, question);
+				cout << endl;
+				int posOfAnswer = rand.i(4);
+				answerOptions(clone, question, rand, posOfAnswer, true);
+			}
+			//year prompt
+			else {
+				cout << "What event occured in the following year?\n";
+				clone.displayNode(clone, question, true);
+				cout << endl;
+				int posOfAnswer = rand.i(4);
+				answerOptions(clone, question, rand, posOfAnswer);
+			}
+			cout << endl;
 			system("pause");
-		//}
+		}
 	}
 }
