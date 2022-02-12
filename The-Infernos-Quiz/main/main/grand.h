@@ -94,7 +94,7 @@ EXAMPLE USAGE
 //      long as it holds for the type that originated the exception.
 class GRand {
 
-    // ***** GRand: internal-use types *****
+// ***** GRand: internal-use types *****
 private:
 
     typedef std::mt19937 rng_type;  // Type of our RNG object
@@ -106,7 +106,7 @@ public:
     // Seed RNG with unpredictable value.
     GRand()
         :_seed_needed(true),
-        _rng()
+         _rng()
     {}
 
     // Ctor from seed (number)
@@ -119,7 +119,7 @@ public:
     template <typename SeedType>
     explicit GRand(SeedType s)
         :_seed_needed(false),
-        _rng(rng_type::result_type(s))
+         _rng(rng_type::result_type(s))
     {}
 
     // Compiler-generated copy/move ctors, copy/move op=, dctor used.
@@ -130,9 +130,7 @@ public:
     // seed - no parameters
     // Seed RNG with unpredictable value.
     void seed()
-    {
-        _seed_needed = true;
-    }
+    { _seed_needed = true; }
 
     // seed from number
     // Seed RNG with given value.
@@ -151,30 +149,28 @@ public:
     // i
     // Return uniformly distributed random integer in range [0, n-1], or
     //  0 if n <= 0. Range is {0, 1} if no parameter given.
-    int i(int n = 2)
-    {
-        return (n <= 1) ? 0 : rand_integer(n);
-    }
+    int i(int n=2)
+    { return (n <= 1) ? 0 : rand_integer(n); }
 
     // d
     // Return uniformly distributed random double in range [0.0, d) if
     //  d > 0.0, in range (d, 0.0] if d < 0.0, or 0.0 if d == 0.0. Range
     //  is [0.0, 1.0) if no parameter given.
-    double d(double d = 1.0)
+    double d(double d=1.0)
     {
         ck_seed();
         if (d > 0.0)
             return std::uniform_real_distribution<double>(0.0, d)(_rng);
         if (d < 0.0)
             return
-            -std::uniform_real_distribution<double>(0.0, -d)(_rng);
+                -std::uniform_real_distribution<double>(0.0, -d)(_rng);
         return 0.0;
     }
 
     // b
     // Return random bool value. Probability of true is given value, or
     //  0.5 if none given.
-    bool b(double p = 0.5)
+    bool b(double p=0.5)
     {
         ck_seed();
         if (p <= 0.0) return false;
@@ -182,7 +178,7 @@ public:
         return std::bernoulli_distribution(p)(_rng);
     }
 
-    // ***** GRand: support for C++ Standard concepts *****
+// ***** GRand: support for C++ Standard concepts *****
 public:
 
     // An object of type GRand meets the requirements for Uniform Random
@@ -207,16 +203,12 @@ public:
     // min
     // Minimum return value of operator() - no parameters.
     static GRAND_CONSTEXPR result_type min()
-    {
-        return rng_type::min();
-    }
+    { return rng_type::min(); }
 
     // max
     // Maximum return value of operator() - no parameters.
     static GRAND_CONSTEXPR result_type max()
-    {
-        return rng_type::max();
-    }
+    { return rng_type::max(); }
 
     // operator() - no arguments
     // Return uniformly distributed random value of type result_type, in
@@ -264,18 +256,18 @@ public:
     { return (n <= (T)(1)) ? (T)(0) : rand_integer(n); }
         // GRAND_OP_PAREN is internal-use only; #undef'd at end of file
     GRAND_OP_PAREN(short)
-        GRAND_OP_PAREN(int)
-        GRAND_OP_PAREN(long)
-        GRAND_OP_PAREN(long long)
-        GRAND_OP_PAREN(unsigned short)
-        GRAND_OP_PAREN(unsigned int)
-        GRAND_OP_PAREN(unsigned long)
-        GRAND_OP_PAREN(unsigned long long)
+    GRAND_OP_PAREN(int)
+    GRAND_OP_PAREN(long)
+    GRAND_OP_PAREN(long long)
+    GRAND_OP_PAREN(unsigned short)
+    GRAND_OP_PAREN(unsigned int)
+    GRAND_OP_PAREN(unsigned long)
+    GRAND_OP_PAREN(unsigned long long)
 
-        // NOTE: An object of type GRand does NOT meet the requirements for
-        // Random Number Engine (C++11 26.5.1.4).
+    // NOTE: An object of type GRand does NOT meet the requirements for
+    // Random Number Engine (C++11 26.5.1.4).
 
-    // ***** GRand: internal-use functions *****
+// ***** GRand: internal-use functions *****
 private:
 
     // rand_integer
@@ -294,14 +286,14 @@ private:
     {
         ck_seed();
 #ifdef __GNUC__
-        // g++ 4.7.* incorrectly gives conversion warnings when IntType is short
+// g++ 4.7.* incorrectly gives conversion warnings when IntType is short
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 #endif
         return std::uniform_int_distribution<IntType>(
             IntType(0),
-            n - IntType(1))
-            (_rng);
+            n-IntType(1))
+                (_rng);
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif
@@ -324,12 +316,12 @@ private:
         _seed_needed = false;
     }
 
-    // ***** GRand: data members *****
+// ***** GRand: data members *****
 private:
 
     bool _seed_needed;
-    // True if seed needed; nondeterministic seeding is
-    //  done if no seed given before output requested
+                    // True if seed needed; nondeterministic seeding is
+                    //  done if no seed given before output requested
     rng_type _rng;  // Our random-number generator object
 
 };  // End class GRand
@@ -339,3 +331,4 @@ private:
 #undef GRAND_CONSTEXPR
 
 #endif //#ifndef FILE_GRAND_H_INCLUDED
+

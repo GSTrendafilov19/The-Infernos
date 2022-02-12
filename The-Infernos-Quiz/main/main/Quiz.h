@@ -19,13 +19,15 @@ class NODE {
 		void removeQuestion(NODE* head);
 		void removeSpecialNode(NODE* head, int i, NODE* prev = NULL);
 		NODE* removeFirstNode(NODE* head);
-		int lengthOfList(NODE* head);
+		int lengthOfList(NODE head);
 
-		void displayList(NODE* head, int i = 1);
+		void displayList(NODE head, int i = 1);
 
 		void insertAfter(NODE* head, string valSearch, int val);
 		NODE* prependNode(NODE* head, int val);
-		bool searchElement(NODE* head, string val);
+		bool searchElement(NODE head, string val);
+		void displayNode(NODE head, int i, bool year = 0);
 };
 
 void addQuestion(string arrow);
+void startQuiz();

@@ -1,5 +1,6 @@
 #include "Quiz.h"
 #include "UserInput.h"
+#include "grand.h"
 
 void clearScreen();
 
@@ -12,7 +13,7 @@ void NODE::inputQuestion(NODE* head) {
 	cout << "Input an event:\n";
 	cin.ignore();
 	getline(cin, historicalEvent, '\n');
-	cout << "When did the event happen? (dd/mm/yy, 0 if it's unknown)\n";
+	cout << "When did the event happen? (dd/mm/yyyy, 0 if it's unknown)\n";
 	cin >> day >> month >> year;
 
 	if (day < 0 || day > 31 || month < 0 || month > 12 || year < 1 || year > 2022) {
@@ -40,7 +41,7 @@ void NODE::appendNode(NODE* head, string val, int day, int month, int year) {
 
 void NODE::removeQuestion(NODE* head) {
 	system("cls");
-	int index, length = lengthOfList(head);;
+	int index, length = lengthOfList(*head);;
 
 	if (length == 1) {
 		cout << "You cannot remove all events\n";
@@ -48,7 +49,7 @@ void NODE::removeQuestion(NODE* head) {
 	}
 	else {
 
-		head->displayList(head);
+		head->displayList(*head);
 		cout << "Which event do you want to remove?\n";
 		cin >> index;
 
@@ -79,16 +80,16 @@ NODE* NODE::removeFirstNode(NODE* head) {
 	return head->next;
 }
 
-int NODE::lengthOfList(NODE* head) {
-	if (head->next != NULL)
-		return lengthOfList(head->next) + 1;
+int NODE::lengthOfList(NODE head) {
+	if (head.next != NULL)
+		return lengthOfList(*(head.next)) + 1;
 	return 1;
 }
 
-void NODE::displayList(NODE* head, int i) {
-	cout << i << ": " << head->data << " " << head->day << "/" << head->month << "/" << head->year << endl;
-	if (head->next != NULL)
-		displayList(head->next, i + 1);
+void NODE::displayList(NODE head, int i) {
+	cout << i << ": " << head.data << " " << head.day << "/" << head.month << "/" << head.year << endl;
+	if (head.next != NULL)
+		displayList(*(head.next), i + 1);
 }
 
 void NODE::insertAfter(NODE* head, string valSearch, int val) {
@@ -110,12 +111,23 @@ NODE* NODE::prependNode(NODE* head, int val) {
 }
 
 
-bool NODE::searchElement(NODE* head, string val) {
-	if (head->data == val)
+bool NODE::searchElement(NODE head, string val) {
+	if (head.data == val)
 		return true;
-	if (head->next == NULL)
+	if (head.next == NULL)
 		return false;
-	return searchElement(head->next, val);
+	return searchElement(*(head.next), val);
+}
+
+void NODE::displayNode(NODE head, int i, bool year) {
+	if (i == 0) {
+		if (year)
+			cout << head.day << "/" << head.month << "/" << head.year;
+		else
+			cout << head.data;
+	}
+	else
+		head.displayNode(*(head.next), i - 1, year);
 }
 
 NODE::NODE() {
@@ -167,7 +179,7 @@ void addQuestion(string arrow) {
 	while (running) {
 		addQuestionMenu(arrow, arrowPos);
 		cout << "\n\n";
-		head->displayList(head);
+		head->displayList(*head);
 
 		int input = userInput();
 
@@ -188,10 +200,32 @@ void addQuestion(string arrow) {
 				break;
 			case 2:
 				running = false;
+				system("cls");
 				break;
 			}
 		}
 		clearScreen();
 	}
 
+}
+
+void startQuiz() {
+	NODE clone = *head;
+	int length = clone.lengthOfList(clone);
+	//check if the list is eligible for a quiz
+	if (length < 5) {
+		cout << "You can't start a quiz with less than 5 questions.\n";
+		system("pause");
+		system("cls");
+	}
+
+	else {
+		GRand rand;
+
+		//event prompt
+		//if (rand.b()) {
+			clone.displayNode(clone, rand.i(length));
+			system("pause");
+		//}
+	}
 }

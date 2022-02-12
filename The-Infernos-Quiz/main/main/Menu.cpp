@@ -232,7 +232,8 @@ void chooseMenu(string arrow, int arrowPos) {
 		if (input == 0) {
 			switch (arrowPos) {
 			case 0:
-				//play quiz
+				system("cls");
+				startQuiz();
 				break;
 			case 1:
 				system("cls");
