@@ -2,7 +2,7 @@
   <p align = "center">
   <img src = "https://imgur.com/eMr5dyd.jpeg"  alt = "logo" width = "400px" height = "400px">
   </p>
-  
+  <hr>
   <p>
     <h1> 👨‍💻 Our Team</h1>
     <p> • <a href = "https://github.com/GSTrendafilov19"> Georgi Trendafilov</a> - Scrum Trainer </p>
@@ -12,7 +12,6 @@
 	</p>
  
 
-  <hr>
   <h1>💻 About  </h1>
   <p> 
   <big> Our history quiz can help a lot of people find their mistakes or practice.</big></p>
