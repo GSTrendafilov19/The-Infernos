@@ -14,8 +14,7 @@
 
 
   <h1>👀 Demo of our project </h1>
-  <p>TO BE ADDED</p>
-  <img src  = "">
+  <img src  = "../Images/Screenshot_9.png">
 
   <h1>📥 How to Download</h1>
   <p>To download our quiz-game you need to do just following thing: <br> </p>
