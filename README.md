@@ -14,7 +14,7 @@
 
 
   <h1>👀 Demo of our project </h1>
-  <img src = "Images\Screenshot_9.png">
+  <img src = "Images\Screenshot_9.png" alt = "menu" width = "500px" height = "500px">
 
   <h1>📥 How to Download</h1>
   <p>To download our quiz-game you need to do just following thing: <br> </p>
