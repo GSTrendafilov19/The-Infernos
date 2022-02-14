@@ -229,14 +229,28 @@ void highlightOption(string str, bool chosen) {
 	cout << str << endl;
 }
 
+bool checkArr(string str, string answ[]) {
+	for (int i = 0; i < 4; i++) {
+		if (answers[i] == str)
+			return true;
+	}
+	return false;
+}
+
 void answerOptions(NODE clone, int question, GRand rand, int answerPos, bool year = false) {
+	for (int i = 0; i < 4; i++)
+		answers[i] = "";
+
 	for(int i = 0; i < 4; i++){
 		if (i == answerPos)
 			answers[i] = clone.returnData(clone, question, year);
 		else {
-			int random = rand.i(clone.lengthOfList(clone));
-			while(random == question)
-				random = rand.i();
+			int random;
+			do {
+				random = rand.i(clone.lengthOfList(clone));
+				while (random == question)
+					random = rand.i(clone.lengthOfList(clone));
+			} while (checkArr(clone.returnData(clone, random, year), answers));
 			answers[i] = clone.returnData(clone, random, year);
 		}
 	}
