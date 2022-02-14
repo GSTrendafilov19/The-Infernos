@@ -7,7 +7,10 @@
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 
-
+/// <summary>
+/// Takes user input and transforms it into a usable form
+/// </summary>
+/// <returns>Integer, corresponding to the specific action</returns>
 int userInput() {
 	switch (_getch()) {
 	case 32:

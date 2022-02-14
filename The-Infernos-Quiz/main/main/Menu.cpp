@@ -15,7 +15,10 @@ using namespace std;
 void chooseMenu(string arrow, int arrowPos = 0);
 void chooseOptions(string arrow, int arrowPos = 0);
 
-//Used to replace 'system("cls")' in order to reduce flickering
+
+/// <summary>
+/// Used to replace 'system("cls")' in order to reduce flickering
+/// </summary>
 void clearScreen()
 {
 	COORD cursorPosition;
@@ -27,7 +30,11 @@ void clearScreen()
 
 }
 
-//Prints Main menu
+/// <summary>
+/// Prints the main menu and handles selection of options
+/// </summary>
+/// <param name="arrow">the highliter which shows you that you've selected an option</param>
+/// <param name="arrowPos">the position of the highliter</param>
 void menu(string arrow, int arrowPos) {
 	cout << "*------------------------------------------*" << endl;
 	cout << ":                                          :" << endl;
@@ -61,6 +68,12 @@ void menu(string arrow, int arrowPos) {
 	cout << "*------------------------------------------*" << endl;
 }
 
+
+/// <summary>
+/// Prints the options menu and handles selection of settings
+/// </summary>
+/// <param name="arrow">the highliter which shows you that you've selected an option</param>
+/// <param name="arrowPos">the position of the highliter</param>
 void options(string arrow, int arrowPos) {
 	cout << "*--------------------------------------------------------------*" << endl;
 	cout << ":                                                              :" << endl;
@@ -95,6 +108,12 @@ void options(string arrow, int arrowPos) {
 	cout << "*--------------------------------------------------------------*" << endl;
 }
 
+
+/// <summary>
+/// Prints the colors menu and handles their selection
+/// </summary>
+/// <param name="arrow">the highliter which shows you that you've selected an option</param>
+/// <param name="arrowPos">the position of the highliter</param>
 void colorMenu(string arrow, int arrowPos) {
 	cout << "*---------------------------------------------------------*" << endl;
 	cout << ":                                                         :" << endl;
@@ -142,7 +161,13 @@ void colorMenu(string arrow, int arrowPos) {
 	cout << "*---------------------------------------------------------*" << endl;
 }
 
-int chooseColor(string arrow, int arrowPos = 0) {
+
+/// <summary>
+/// Handles the logic of the color menu
+/// </summary>
+/// <param name="arrow">the highliter which shows you that you've selected an option</param>
+/// <param name="arrowPos">the position of the highliter</param>
+void chooseColor(string arrow, int arrowPos = 0) {
 	while (1) {
 		colorMenu(arrow, arrowPos);
 		int input = userInput();
@@ -182,6 +207,11 @@ int chooseColor(string arrow, int arrowPos = 0) {
 	}
 }
 
+/// <summary>
+/// Handles the logic of the options menu
+/// </summary>
+/// <param name="arrow">the highliter which shows you that you've selected an option</param>
+/// <param name="arrowPos">the position of the highliter</param>
 void chooseOptions(string arrow, int arrowPos) {
 	while (1) {
 		options(arrow, arrowPos);
@@ -216,7 +246,11 @@ void chooseOptions(string arrow, int arrowPos) {
 }
 
 
-//Choose whether to Play, change Options or Exit
+/// <summary>
+/// Handles the logic of the main menu
+/// </summary>
+/// <param name="arrow">the highliter which shows you that you've selected an option</param>
+/// <param name="arrowPos">the position of the highliter</param>
 void chooseMenu(string arrow, int arrowPos) {
 	while (1) {
 		menu(arrow, arrowPos);
@@ -245,18 +279,4 @@ void chooseMenu(string arrow, int arrowPos) {
 		}
 		clearScreen();
 	}
-}
-
-
-//prints Winning text
-void winningText() {
-	cout << "*-----------------------------------------------------------*" << endl;
-	cout << "|  __   __  _______  __   __    _     _  ___   __    _  __  |" << endl;
-	cout << "| |  | |  ||       ||  | |  |  | | _ | ||   | |  |  | ||  | |" << endl;
-	cout << "| |  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| ||  | |" << endl;
-	cout << "| |       ||  | |  ||  |_|  |  |       ||   | |       ||  | |" << endl;
-	cout << "| |_     _||  |_|  ||       |  |       ||   | |  _    ||__| |" << endl;
-	cout << "|   |   |  |       ||       |  |   _   ||   | | | |   | __  |" << endl;
-	cout << "|   |___|  |_______||_______|  |__| |__||___| |_|  |__||__| |" << endl;
-	cout << "*-----------------------------------------------------------*" << endl;
 }

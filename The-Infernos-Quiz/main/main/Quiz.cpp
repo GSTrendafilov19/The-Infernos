@@ -7,16 +7,22 @@ void clearScreen();
 NODE* head = new NODE;
 string answers[4];
 
+/// <summary>
+/// A member function that handles the input of questions
+/// </summary>
+/// <param name="head">the head of the linked list</param>
 void NODE::inputQuestion(NODE* head) {
 	system("cls");
 	string historicalEvent;
 	int day, month, year;
 	cout << "Input an event:\n";
+	//handle residual input
 	cin.ignore();
 	getline(cin, historicalEvent, '\n');
 	cout << "When did the event happen? (dd/mm/yyyy, 0 if it's unknown)\n";
 	cin >> day >> month >> year;
 
+	//check date validity
 	if (day < 0 || day > 31 || month < 0 || month > 12 || year < 1 || year > 2022) {
 		cout << "Incorrect date\n";
 		system("pause");
@@ -26,7 +32,14 @@ void NODE::inputQuestion(NODE* head) {
 		head->appendNode(head, historicalEvent, day, month, year);
 }
 
-
+/// <summary>
+/// A function that appends an element to a given linked list
+/// </summary>
+/// <param name="head">the head of the linked list</param>
+/// <param name="val">the event to be appended</param>
+/// <param name="day">the day to be appended</param>
+/// <param name="month">the month to be appended</param>
+/// <param name="year">the year to be appended</param>
 void NODE::appendNode(NODE* head, string val, int day, int month, int year) {
 	if (head->next == NULL) {
 		head->next = new NODE;
@@ -40,10 +53,14 @@ void NODE::appendNode(NODE* head, string val, int day, int month, int year) {
 		appendNode(head->next, val, day, month, year);
 }
 
+/// <summary>
+/// A member function that handles the removal of questions
+/// </summary>
+/// <param name="head">the head of the linked list</param>
 void NODE::removeQuestion(NODE* head) {
 	system("cls");
 	int index, length = lengthOfList(*head);;
-
+	//check quiz eligibility
 	if (length == 1) {
 		cout << "You cannot remove all events\n";
 		system("pause");
@@ -54,6 +71,7 @@ void NODE::removeQuestion(NODE* head) {
 		cout << "Which event do you want to remove?\n";
 		cin >> index;
 
+		//check for proper index
 		if (index <= length) {
 			if (index == 1)
 				*head = *head->removeFirstNode(head);
@@ -68,6 +86,13 @@ void NODE::removeQuestion(NODE* head) {
 	}
 }
 
+
+/// <summary>
+/// A function that removes an element to a given linked list
+/// </summary>
+/// <param name="head">the head of the linked list</param>
+/// <param name="i">the index of the element to be removed</param>
+/// <param name="prev">a temporary node, used to hold the previous node's information</param>
 void NODE::removeSpecialNode(NODE* head, int i, NODE* prev) {
 	if (i == 1) {
 		prev->next = head->next;
@@ -77,49 +102,44 @@ void NODE::removeSpecialNode(NODE* head, int i, NODE* prev) {
 		removeSpecialNode(head->next, i-1, head);
 }
 
+/// <summary>
+/// A memeber function that removes the last node of a list
+/// </summary>
+/// <param name="head">the head of the linked list</param>
+/// <returns>returns the new head</returns>
 NODE* NODE::removeFirstNode(NODE* head) {
 	return head->next;
 }
 
+
+/// <summary>
+/// A function that returns the lenght of a linked list
+/// </summary>
+/// <param name="head">the head of the linked list</param>
+/// <returns>returns the length of the list</returns>
 int NODE::lengthOfList(NODE head) {
 	if (head.next != NULL)
 		return lengthOfList(*(head.next)) + 1;
 	return 1;
 }
 
+/// <summary>
+/// Outputs a given list
+/// </summary>
+/// <param name="head">the head of the linked list</param>
+/// <param name="i">the index of the item</param>
 void NODE::displayList(NODE head, int i) {
 	cout << i << ": " << head.data << " " << head.day << "/" << head.month << "/" << head.year << endl;
 	if (head.next != NULL)
 		displayList(*(head.next), i + 1);
 }
 
-void NODE::insertAfter(NODE* head, string valSearch, int val) {
-	if (head->data == valSearch) {
-		NODE* ptr = head->next;
-		head->next = new NODE;
-		head->next->data = val;
-		head->next->next = ptr;
-	}
-	else
-		insertAfter(head->next, valSearch, val);
-}
-
-NODE* NODE::prependNode(NODE* head, int val) {
-	NODE* ptr = new NODE;
-	ptr->data = val;
-	ptr->next = head;
-	return ptr;
-}
-
-
-bool NODE::searchElement(NODE head, string val) {
-	if (head.data == val)
-		return true;
-	if (head.next == NULL)
-		return false;
-	return searchElement(*(head.next), val);
-}
-
+/// <summary>
+/// Displays a given node
+/// </summary>
+/// <param name="head">the head of the linked list</param>
+/// <param name="i">the index of the node to be displayed</param>
+/// <param name="year">a boolean value which indicate whether to display the date or the event</param>
 void NODE::displayNode(NODE head, int i, bool year) {
 	if (i == 0) {
 		if (year)
@@ -131,7 +151,16 @@ void NODE::displayNode(NODE head, int i, bool year) {
 		head.displayNode(*(head.next), i - 1, year);
 }
 
+
+/// <summary>
+/// A simple function that returns the requested data from a node
+/// </summary>
+/// <param name="head">the head of a linked list</param>
+/// <param name="i">the index of the node</param>
+/// <param name="year">a boolean value which indicate whether to return the date or the event</param>
+/// <returns>a string value of the event or year</returns>
 string NODE::returnData(NODE head, int i, bool year) {
+	//return the date or event
 	if (i != 0)
 		return head.returnData(*(head.next), i - 1, year);
 	else {
@@ -142,10 +171,18 @@ string NODE::returnData(NODE head, int i, bool year) {
 	}
 }
 
+/// <summary>
+/// Constructor to the class NODE
+/// </summary>
 NODE::NODE() {
 	next = NULL;
 }
 
+/// <summary>
+/// Displays the menu for adding questions
+/// </summary>
+/// <param name="arrow">the highliter that shows which item has been selected</param>
+/// <param name="arrowPos">the position of the highlited</param>
 void addQuestionMenu(string arrow, int arrowPos) {
 	cout << "*-------------------------------*                        " << endl;
 	cout << ":                               :                        " << endl;
@@ -178,11 +215,15 @@ void addQuestionMenu(string arrow, int arrowPos) {
 	cout << "*-------------------------------*" << endl;
 }
 
+/// <summary>
+/// The logic behind the add questions menu
+/// </summary>
+/// <param name="arrow">the highliter used to show which item has been selected</param>
 void addQuestion(string arrow) {
 	int arrowPos = 0;
 	int running = true;
 
-	//example event
+	//default event
 	head->data = "Creation of the first bulgarian kingdom";
 	head->day = 0;
 	head->month = 0;
@@ -221,7 +262,11 @@ void addQuestion(string arrow) {
 
 }
 
-
+/// <summary>
+/// A function that highlits the requested item
+/// </summary>
+/// <param name="str">the string to be highlited</param>
+/// <param name="chosen">a boolean value that dictates whether the string is highlited</param>
 void highlightOption(string str, bool chosen) {
 	//highlight the chosen text
 	if (chosen)
@@ -229,6 +274,12 @@ void highlightOption(string str, bool chosen) {
 	cout << str << endl;
 }
 
+/// <summary>
+/// Checks an array of strings for another string
+/// </summary>
+/// <param name="str">The string that's compared to the array</param>
+/// <param name="answ">The array</param>
+/// <returns>returnst a boolean value</returns>
 bool checkArr(string str, string answ[]) {
 	for (int i = 0; i < 4; i++) {
 		if (answers[i] == str)
@@ -237,26 +288,45 @@ bool checkArr(string str, string answ[]) {
 	return false;
 }
 
-void answerOptions(NODE clone, int question, GRand rand, int answerPos, bool year = false) {
+/// <summary>
+/// A function that fills an array with answers for the next rotation of questions
+/// </summary>
+/// <param name="head">the head of the linked list</param>
+/// <param name="question">the index of the question</param>
+/// <param name="rand">a random variable</param>
+/// <param name="answerPos">the position of the correct answer</param>
+/// <param name="year">a boolean value that dictates whether the question is about an event or a date</param>
+void answerOptions(NODE head, int question, GRand rand, int answerPos, bool year = false) {
 	for (int i = 0; i < 4; i++)
 		answers[i] = "";
 
 	for(int i = 0; i < 4; i++){
+		//check if correct answer should be put in position
 		if (i == answerPos)
-			answers[i] = clone.returnData(clone, question, year);
+			answers[i] = head.returnData(head, question, year);
 		else {
 			int random;
+			//retry answers until a new one is recieved
 			do {
-				random = rand.i(clone.lengthOfList(clone));
+				random = rand.i(head.lengthOfList(head));
+				//prevents displaying of the correct answer again
 				while (random == question)
-					random = rand.i(clone.lengthOfList(clone));
-			} while (checkArr(clone.returnData(clone, random, year), answers));
-			answers[i] = clone.returnData(clone, random, year);
+					random = rand.i(head.lengthOfList(head));
+			} while (checkArr(head.returnData(head, random, year), answers));
+			answers[i] = head.returnData(head, random, year);
 		}
 	}
 }
 
-void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE clone, int question) {
+/// <summary>
+/// The main menu for the quiz
+/// </summary>
+/// <param name="answers">an array with answers to be displayed</param>
+/// <param name="answerPos">the position of the correct answer</param>
+/// <param name="eventPrompt">a boolean value that dictates what type of prompt will be displayed</param>
+/// <param name="head">the head of the linked list</param>
+/// <param name="question">the position of the question in the list</param>
+void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE head, int question) {
 	int arrowPos = 0;
 	while (true) {
 
@@ -268,7 +338,7 @@ void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE clone, int
 			cout << "What event occured on the following date?\n";
 
 
-		clone.displayNode(clone, question, !eventPrompt);
+		head.displayNode(head, question, !eventPrompt);
 		cout << endl;
 
 		for (int i = 0; i < 4; i++)
@@ -310,9 +380,12 @@ void quizMenu(string answers[], int answerPos, bool eventPrompt, NODE clone, int
 	}
 }
 
+
+/// <summary>
+/// A function that kickstarts the quiz
+/// </summary>
 void startQuiz() {
-	NODE clone = *head;
-	int length = clone.lengthOfList(clone);
+	int length = head->lengthOfList(*head);
 	
 	//check if the list is eligible for a quiz
 	if (length < 5) {
@@ -330,8 +403,8 @@ void startQuiz() {
 			bool eventPrompt = rand.b();
 			int answerPos = rand.i(4);
 
-			answerOptions(clone, question, rand, answerPos, eventPrompt);
-			quizMenu(answers, answerPos, eventPrompt, clone, question);
+			answerOptions(*head, question, rand, answerPos, eventPrompt);
+			quizMenu(answers, answerPos, eventPrompt, *head, question);
 		}
 	}
 }
